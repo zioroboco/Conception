@@ -35,7 +35,8 @@ This is a bit more complicated. You need to make some changes both to VSCode and
 
 ####  2.2.1. <a name='InstallMono-4'></a>Install Mono
 Mono is the C# framework used by Unity, and you'll need to install it independently before VSCode will be able to check your code.
-1. Go to <http://www.mono-project.com/download/> and hit Download Mono
+
+1. Go to <http://www.mono-project.com/download/> and download and install Mono
 
 ####  2.2.2. <a name='SetupVSCode-5'></a>Set up VSCode
 1. Install VSCode
