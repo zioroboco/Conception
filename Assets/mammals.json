@@ -1,0 +1,131 @@
+{
+    "map":[
+        {
+            "name":"Marine mammal",
+            "children":[
+                {
+                    "name":"Cetacean",
+                    "children":[
+                        {
+                            "name":"Toothed whale",
+                            "children":[
+                                {
+                                    "name":"Sperm whale",
+                                    "children":[]
+                                },
+                                {
+                                    "name":"Dolphin",
+                                    "children":[]
+                                }
+                            ]
+                        },
+                        {
+                            "name":"Baleen whale",
+                            "children":[
+                                {
+                                    "name":"Humpback whale",
+                                    "children":[]
+                                },
+                                {
+                                    "name":"Blue whale",
+                                    "children":[]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name":"Sirenian",
+                    "children":[
+                        {
+                            "name":"Manatee",
+                            "children":[]
+                        },
+                        {
+                            "name":"Dugong",
+                            "children":[]
+                        }
+                    ]
+                },
+                {
+                    "name":"Pinniped",
+                    "children":[
+                        {
+                            "name":"Seal lion",
+                            "children":[]
+                        },
+                        {
+                            "name":"Walrus",
+                            "children":[]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+
+    "feedback":[
+        {
+            "child":"Dolphin",
+            "positive":[
+                {
+                    "parent":"Toothed whale",
+                    "message":"That's right! Dolphins are toothed whales!"
+                }
+            ],
+            "negative":[
+                {
+                    "parent":"Toothed whale",
+                    "message":"They're very closely related to this species! But what are they more generally?"
+                },
+                {
+                    "parent":"Baleen whale",
+                    "message":"So close, but dolphins are a different kind of whale. What do they have that many other whales don't?"
+                },
+                {
+                    "parent":"Sirenian",
+                    "message":"Dolphins are in a different family of marine mammals. Try again!"
+                },
+                {
+                    "parent":"Pinniped",
+                    "message":"Dolphins are in a different family of marine mammals. Try again!"
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"Dolphins have a more specific classification than this. Try placing them lower on your map!"
+                }
+            ]
+        },
+        {
+            "child":"Sperm whale",
+            "positive":[
+                {
+                    "parent":"Toothed whale",
+                    "message":"That's right! Sperm whales are toothed whales!"
+                }
+            ],
+            "negative":[
+                {
+                    "parent":"Toothed whale",
+                    "message":"They're very closely related to this species! But what are they more generally?"
+                },
+                {
+                    "parent":"Baleen whale",
+                    "message":"So close, but sperm whales are a different kind of whale. Try again!"
+                },
+                {
+                    "parent":"Sirenian",
+                    "message":"Sperm whales are in a different family of marine mammals. Try again!"
+                },
+                {
+                    "parent":"Pinniped",
+                    "message":"Sperm whales are in a different family of marine mammals. Try again!"
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"Sperm whales have a more specific classification than this. Try placing them lower on your map!"
+                }
+            ]
+        }
+    ]
+}
