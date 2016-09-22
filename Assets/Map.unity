@@ -184,11 +184,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd941e63b48864d4ab9ab2a9ff5f5463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: 0
   Min: 50
   Max: 200
-  Sensitivity: 1
+  ZoomSensitivity: 2
   Invert: 0
+  ScrollSensitivity: 0.5
+  button: 0
 --- !u!1 &292624684
 GameObject:
   m_ObjectHideFlags: 1
@@ -232,7 +233,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1001 &459992325
 Prefab:
   m_ObjectHideFlags: 0
@@ -394,7 +395,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &2019710447
 GameObject:
   m_ObjectHideFlags: 0
