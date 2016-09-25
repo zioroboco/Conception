@@ -10,12 +10,10 @@
                             "name":"Toothed whale",
                             "children":[
                                 {
-                                    "name":"Sperm whale",
-                                    "children":[]
+                                    "name":"Sperm whale"
                                 },
                                 {
-                                    "name":"Dolphin",
-                                    "children":[]
+                                    "name":"Dolphin"
                                 }
                             ]
                         },
@@ -23,12 +21,10 @@
                             "name":"Baleen whale",
                             "children":[
                                 {
-                                    "name":"Humpback whale",
-                                    "children":[]
+                                    "name":"Humpback whale"
                                 },
                                 {
-                                    "name":"Blue whale",
-                                    "children":[]
+                                    "name":"Blue whale"
                                 }
                             ]
                         }
@@ -38,12 +34,10 @@
                     "name":"Sirenian",
                     "children":[
                         {
-                            "name":"Manatee",
-                            "children":[]
+                            "name":"Manatee"
                         },
                         {
-                            "name":"Dugong",
-                            "children":[]
+                            "name":"Dugong"
                         }
                     ]
                 },
@@ -51,12 +45,10 @@
                     "name":"Pinniped",
                     "children":[
                         {
-                            "name":"Seal lion",
-                            "children":[]
+                            "name":"Seal lion"
                         },
                         {
-                            "name":"Walrus",
-                            "children":[]
+                            "name":"Walrus"
                         }
                     ]
                 }
@@ -66,31 +58,14 @@
 
     "feedback":[
         {
-            "child":"Default",
-            "positive":[
-                {
-                    "parent":"Default",
-                    "message":"That's right!"
-                }
-            ],
-            "negative":[
-                {
-                    "parent":"Default",
-                    "message":"That's wrong!"
-                }
-            ]
-        },
-        {
             "child":"Dolphin",
-            "positive":[
+            "categories":[
                 {
                     "parent":"Toothed whale",
                     "message":"That's right! Dolphins are toothed whales!"
-                }
-            ],
-            "negative":[
+                },
                 {
-                    "parent":"Toothed whale",
+                    "parent":"Humpback whale",
                     "message":"They're very closely related to this species! But what are they more generally?"
                 },
                 {
@@ -113,15 +88,13 @@
         },
         {
             "child":"Sperm whale",
-            "positive":[
+            "categories":[
                 {
                     "parent":"Toothed whale",
                     "message":"That's right! Sperm whales are toothed whales!"
-                }
-            ],
-            "negative":[
+                },
                 {
-                    "parent":"Toothed whale",
+                    "parent":"Humpback whale",
                     "message":"They're very closely related to this species! But what are they more generally?"
                 },
                 {
