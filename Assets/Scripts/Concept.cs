@@ -52,6 +52,7 @@ public class Concept : MonoBehaviour
     public void SetName(string name)
     {
 		label.text = name;
+		gameObject.name = "Concept (" + name + ")";
     }
 
 	public void SetParent(Concept parentConcept)

@@ -61,14 +61,11 @@ public class ConceptMap : MonoBehaviour
 		return node.Count == 1;
 	}
 
-	/// Instantiate and initialise a new Concept prefab.
+	/// Instantiate and initialise a new concept.
 	Concept CreateConcept (string name)
 	{
-		// Instantiate and name the gameobject.
+		// Instantiate and name the concept.
 		GameObject conceptGameObject = Instantiate(ConceptPrefab);
-		conceptGameObject.name = ("Concept (" + name + ")");
-
-		// Set the name on the label.
 		Concept concept = conceptGameObject.GetComponent<Concept>();
 		concept.SetName(name);
 
