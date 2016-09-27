@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 public class Palette : MonoBehaviour
 {
-	const float FEEDBACK_COL_WIDTH = 0; // todo: replace me in feedback code
-	const float CONCEPT_WIDTH = 36; // todo: look me up in the concept prefab
-	const float CONCEPT_HEIGHT = 8; // todo: look me up in the concept prefab
+	const float FEEDBACK_COL_WIDTH = 0f; // todo: replace me in feedback code
+	const float CONCEPT_WIDTH = 36f; // todo: look me up in the concept prefab
+	const float CONCEPT_HEIGHT = 8f; // todo: look me up in the concept prefab
 
 	[SerializeField]
-	float HorizontalPadding = 5;
+	float HorizontalPadding = 5f;
 	
     [SerializeField]
-	float VerticalPadding = 5;
+	float VerticalPadding = 5f;
 
 	float DesktopWidth;
 	float DesktopBottomCentre;
@@ -29,14 +29,14 @@ public class Palette : MonoBehaviour
 		CalculateArrangement();
 		Place(ConceptTransforms);
 
-		this.transform.position += Vector3.left * (DesktopWidth / 2 - CONCEPT_WIDTH / 2 - HorizontalPadding);
-		this.transform.position += Vector3.down * (Camera.main.orthographicSize - CONCEPT_HEIGHT / 2 - VerticalPadding);
+		this.transform.position += Vector3.left * (DesktopWidth / 2f - ConceptSpacing / 2f);
+		this.transform.position += Vector3.down * (Camera.main.orthographicSize - CONCEPT_HEIGHT / 2f - VerticalPadding);
 	}
 
 	/// Calculate how many rows there will be, and how many concepts per full row.
 	void CalculateArrangement ()
 	{
-		DesktopWidth = (Camera.main.orthographicSize * 2 * Screen.width / Screen.height) - FEEDBACK_COL_WIDTH;
+		DesktopWidth = (Camera.main.orthographicSize * 2f * Screen.width / Screen.height) - FEEDBACK_COL_WIDTH;
 		MaxConceptsPerRow = ConceptTransforms.Count;
 		NumberOfRows = 1;
 		while (MaxConceptsPerRow * (CONCEPT_WIDTH + HorizontalPadding) - HorizontalPadding > DesktopWidth)
@@ -59,8 +59,11 @@ public class Palette : MonoBehaviour
 			// add some transforms to the row and remove them from the master list
 			for (int t = 0; t < MaxConceptsPerRow; t++)
 			{
-				rowConceptTransforms.Add(conceptTransforms[0]);
-				conceptTransforms.RemoveAt(0);
+				if (conceptTransforms.Count > 0)
+				{
+					rowConceptTransforms.Add(conceptTransforms[0]);
+					conceptTransforms.RemoveAt(0);
+				}
 			}
 
 			// make the new row with this list of transforms
@@ -116,6 +119,11 @@ public class Palette : MonoBehaviour
 
 		// increase the row's y-component by the above
 		rowTransform.position += Vector3.up * verticalOffset;
+
+		if (rowTransform.childCount < MaxConceptsPerRow)
+		{
+			rowTransform.position += Vector3.right * ConceptSpacing / 2f;
+		}
 	}
 }
 
