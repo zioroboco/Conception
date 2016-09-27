@@ -41,8 +41,8 @@ public class Palette : MonoBehaviour
 		NumberOfRows = 1;
 		while (MaxConceptsPerRow * (CONCEPT_WIDTH + HorizontalPadding) - HorizontalPadding > DesktopWidth)
 		{
-			MaxConceptsPerRow -= (MaxConceptsPerRow / 2);
 			NumberOfRows++;
+			MaxConceptsPerRow = (int) Mathf.Ceil((float) ConceptTransforms.Count / (float) NumberOfRows);
 		}
 		ConceptSpacing = DesktopWidth / MaxConceptsPerRow;
 	}
@@ -70,7 +70,7 @@ public class Palette : MonoBehaviour
 			Transform newRow = CreateRow(rowConceptTransforms, r);
 
 			// position this row on the screen
-			PlaceRow(newRow, r);
+			PositionRow(newRow, r);
 		}
 	}
 
@@ -112,7 +112,7 @@ public class Palette : MonoBehaviour
 	}
 
 	/// Position a row on the screen according to its row number.
-	void PlaceRow (Transform rowTransform, int rowNumber)
+	void PositionRow (Transform rowTransform, int rowNumber)
 	{
 		// calculate how far up to place the row
 		float verticalOffset = rowNumber * (CONCEPT_HEIGHT + VerticalPadding);
