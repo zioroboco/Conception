@@ -31,7 +31,6 @@ public class ConceptMap : MonoBehaviour
 		this.feedback = json["feedback"];
 
 		this.root = Populate(null, json["map"][0]);
-//		this.root.transform.parent = this.transform;
 	}
 
 	/// Build a concept map from the given partial tree.
@@ -79,7 +78,7 @@ public class ConceptMap : MonoBehaviour
 		JsonData categoriesArray = CategoriesArrayForChild(name);
 		concept.SetFeedback(BuildFeedbackDictionary(categoriesArray));
 
-		conceptGameObject.transform.parent = palette.gameObject.transform;
+		conceptGameObject.transform.SetParent(palette.gameObject.transform);
 		palette.ConceptTransforms.Add(conceptGameObject.transform);
 
 		return concept;

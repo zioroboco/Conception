@@ -14,6 +14,8 @@ public class Palette : MonoBehaviour
 	float VerticalPadding = 5;
 
 	float DesktopWidth;
+	float DesktopBottomCentre;
+	float ConceptSpacing;
 	
 	int MaxConceptsPerRow;
 	int NumberOfRows;
@@ -26,12 +28,15 @@ public class Palette : MonoBehaviour
 		ConceptTransforms.Shuffle();
 		CalculateArrangement();
 		Place(ConceptTransforms);
+
+		this.transform.position += Vector3.left * (DesktopWidth / 2 - CONCEPT_WIDTH / 2 - HorizontalPadding);
+		this.transform.position += Vector3.down * (Camera.main.orthographicSize - CONCEPT_HEIGHT / 2 - VerticalPadding);
 	}
 
 	/// Calculate how many rows there will be, and how many concepts per full row.
 	void CalculateArrangement ()
 	{
-		DesktopWidth = Screen.width - FEEDBACK_COL_WIDTH;
+		DesktopWidth = (Camera.main.orthographicSize * 2 * Screen.width / Screen.height) - FEEDBACK_COL_WIDTH;
 		MaxConceptsPerRow = ConceptTransforms.Count;
 		NumberOfRows = 1;
 		while (MaxConceptsPerRow * (CONCEPT_WIDTH + HorizontalPadding) - HorizontalPadding > DesktopWidth)
@@ -39,6 +44,7 @@ public class Palette : MonoBehaviour
 			MaxConceptsPerRow -= (MaxConceptsPerRow / 2);
 			NumberOfRows++;
 		}
+		ConceptSpacing = DesktopWidth / MaxConceptsPerRow;
 	}
 
 	/// Place the concept transforms in rows on the palette.
@@ -68,29 +74,38 @@ public class Palette : MonoBehaviour
 	/// Create a row containing the given transforms.
 	Transform CreateRow (List<Transform> rowConceptTransforms, int rowNumber)
 	{
-		// create the row gameobject and make it a child of the palette
-		Transform row = new GameObject(name = "Row " + rowNumber.ToString()).transform;
-		row.parent = this.gameObject.transform;
+		// create and name the row gameobject
+		GameObject rowGameObject = new GameObject();
+		rowGameObject.name = "Row" + rowNumber.ToString();
 
-/*
-		// for each transform in this row's list...
+		// make the row's transform a child of palette
+		Transform rowTransform = rowGameObject.transform;
+		rowTransform.SetParent(this.gameObject.transform);
+
+		// for each transform in this row's list of concept transforms...
 		for (int t = 0; t < rowConceptTransforms.Count; t++)
 		{
 			// set that transform's parent to the row
-			rowConceptTransforms[t].parent = row;
-
-			// position the transform within the row
-			// todo: get row heights/composition, then fix this
-//			rowConceptTransforms[t].localPosition = Vector3.left * (CONCEPT_WIDTH + HorizontalPadding) / 2f; // todo: too much horizontal padding
+			rowConceptTransforms[t].SetParent(rowTransform);
 		}
-*/
 
 		foreach (Transform t in rowConceptTransforms)
 		{
-			t.parent = row;
+			t.SetParent(rowTransform);
 		}
 
-		return row;
+		ArrangeConceptsWithinRow(rowTransform);
+
+		return rowTransform;
+	}
+
+	void ArrangeConceptsWithinRow(Transform row)
+	{
+		foreach (Transform t in row)
+		{
+			int index = t.GetSiblingIndex();
+			t.localPosition += Vector3.right * ConceptSpacing * index;
+		}
 	}
 
 	/// Position a row on the screen according to its row number.
@@ -101,14 +116,6 @@ public class Palette : MonoBehaviour
 
 		// increase the row's y-component by the above
 		rowTransform.position += Vector3.up * verticalOffset;
-
-		// if the row has an odd number of elements, center it on the screen
-		// todo: worry about this later
-//		if (rowTransform.childCount % 2 != 0)
-//		{
-//			float oddOffset = (CONCEPT_WIDTH + HorizontalPadding) / 2f;
-//			rowTransform.position += Vector3.right * oddOffset;
-//		}
 	}
 }
 
