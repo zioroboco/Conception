@@ -9,6 +9,10 @@ public class ConceptMap : MonoBehaviour
 	TextAsset SourceFile;
 	[SerializeField]
 	GameObject ConceptPrefab;
+	[SerializeField]
+	Palette palette;
+
+	public int Count { get; private set; }
 
 	JsonData feedback;
 	Concept root;
@@ -16,6 +20,7 @@ public class ConceptMap : MonoBehaviour
 	void Awake ()
 	{
 		Load(SourceFile);
+		palette.Arrange();
 	}
 
 	/// Build a map from the given source file.
@@ -26,7 +31,6 @@ public class ConceptMap : MonoBehaviour
 		this.feedback = json["feedback"];
 
 		this.root = Populate(null, json["map"][0]);
-		this.root.transform.parent = this.transform;
 	}
 
 	/// Build a concept map from the given partial tree.
@@ -39,7 +43,7 @@ public class ConceptMap : MonoBehaviour
 		// Parent the new concept.
 		if (parent)
 		{
-			concept.SetParent(parent);
+			concept.SetParentConcept(parent);
 		}
 
 		// Recursively build the subtrees in "children", with this new concept as parent.
@@ -52,6 +56,7 @@ public class ConceptMap : MonoBehaviour
 			}
 		}
 
+		Count++;
 		return concept;
 	}
 
@@ -72,6 +77,9 @@ public class ConceptMap : MonoBehaviour
 		// Create a feedback dictionary from this concept's "categories" array.
 		JsonData categoriesArray = CategoriesArrayForChild(name);
 		concept.SetFeedback(BuildFeedbackDictionary(categoriesArray));
+
+		conceptGameObject.transform.SetParent(palette.gameObject.transform);
+		palette.ConceptTransforms.Add(conceptGameObject.transform);
 
 		return concept;
 	}

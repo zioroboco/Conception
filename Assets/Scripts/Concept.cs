@@ -1,40 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System;
 
 public class Concept : MonoBehaviour
 {
-	[SerializeField] GameObject Label;
-
-	Dictionary<string,string> feedback;
-
-	bool rooted = false;
+	public Dictionary<string,string> feedback {get; private set;}
 	TextMesh label;
+	Concept parent;
 
 	void Awake ()
 	{
 		label = GetComponentInChildren<TextMesh>();
-	}
-
-	void Root ()
-	{
-		if (rooted) return;
-		// todo: root me
-		if (!this.IsMapRoot())
-			this.GetComponent<Rigidbody2D>().isKinematic = false;
-	}
-
-	public GameObject ParentGameObject () {
-		return this.transform.parent.gameObject;
-	}
-
-	public Concept ParentConcept () {
-		return this.ParentGameObject().GetComponent<Concept>();
-	}
-
-	public bool IsMapRoot ()
-	{
-		return !ParentConcept();
 	}
 
 	public void SetFeedback(Dictionary<string, string> feedback)
@@ -55,8 +30,8 @@ public class Concept : MonoBehaviour
 		gameObject.name = "Concept (" + name + ")";
     }
 
-	public void SetParent(Concept parentConcept)
+	public void SetParentConcept(Concept parentConcept)
 	{
-		this.transform.parent = parentConcept.transform;
+		this.parent = parentConcept;
 	}
 }
