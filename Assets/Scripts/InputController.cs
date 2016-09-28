@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class InputController : MonoBehaviour
 {
 	enum MouseButton { Primary, Secondary };
 
