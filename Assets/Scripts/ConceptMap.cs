@@ -31,6 +31,10 @@ public class ConceptMap : MonoBehaviour
 		this.feedback = json["feedback"];
 
 		this.root = Populate(null, json["map"][0]);
+
+		this.root.transform.parent = this.transform;
+		this.root.transform.position += Vector3.up * Camera.main.orthographicSize * 0.5f;
+		palette.ConceptTransforms.RemoveAt(0);
 	}
 
 	/// Build a concept map from the given partial tree.
