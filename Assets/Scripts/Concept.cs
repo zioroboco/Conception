@@ -1,20 +1,38 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Concept : MonoBehaviour
 {
-	[SerializeField] GameObject Label;
-
-	Concept parentConcept;
+	public Dictionary<string,string> feedback {get; private set;}
+	TextMesh label;
 	
-	bool rooted = false;
+	public Concept parent;
 
 	void Awake ()
 	{
+		label = GetComponentInChildren<TextMesh>();
 	}
 
-	void Root ()
+	public void SetFeedback(Dictionary<string, string> feedback)
 	{
-		if (rooted) return;
+		this.feedback = feedback;
+	}
+
+	public string GetFeedback(string parent)
+	{
+		string message;
+		feedback.TryGetValue(parent, out message);
+		return message;
+	}
+
+    public void SetName(string name)
+    {
+		label.text = name;
+		gameObject.name = "Concept (" + name + ")";
+    }
+
+	public void SetParentConcept(Concept parentConcept)
+	{
+		this.parent = parentConcept;
 	}
 }

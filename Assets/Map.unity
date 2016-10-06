@@ -146,7 +146,7 @@ Camera:
   far clip plane: 1
   field of view: 60
   orthographic: 1
-  orthographic size: 50
+  orthographic size: 100
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -170,7 +170,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 2055343811}
+  - {fileID: 2019710451}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!114 &190260705
@@ -184,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd941e63b48864d4ab9ab2a9ff5f5463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Min: 50
+  Min: 100
   Max: 200
   ZoomSensitivity: 2
   Invert: 0
@@ -271,69 +273,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 483510, guid: 26378f0b759874f498703cfcabf9c60e, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11455498, guid: 26378f0b759874f498703cfcabf9c60e, type: 2}
       propertyPath: SourceFile
       value: 
       objectReference: {fileID: 4900000, guid: cbcd610f9230b40e19e02fe063a959bf, type: 3}
+    - target: {fileID: 11455498, guid: 26378f0b759874f498703cfcabf9c60e, type: 2}
+      propertyPath: palette
+      value: 
+      objectReference: {fileID: 2055343812}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26378f0b759874f498703cfcabf9c60e, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &644384751
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1005237164}
-    m_Modifications:
-    - target: {fileID: 496204, guid: 1b2ea8608fee1403294242237af215d6, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496204, guid: 1b2ea8608fee1403294242237af215d6, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496204, guid: 1b2ea8608fee1403294242237af215d6, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496204, guid: 1b2ea8608fee1403294242237af215d6, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496204, guid: 1b2ea8608fee1403294242237af215d6, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496204, guid: 1b2ea8608fee1403294242237af215d6, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496204, guid: 1b2ea8608fee1403294242237af215d6, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 496204, guid: 1b2ea8608fee1403294242237af215d6, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 10248626, guid: 1b2ea8608fee1403294242237af215d6, type: 2}
-      propertyPath: m_Text
-      value: Humpback whale
-      objectReference: {fileID: 0}
-    - target: {fileID: 5076728, guid: 1b2ea8608fee1403294242237af215d6, type: 2}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 1b2ea8608fee1403294242237af215d6, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &1005237164 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 483510, guid: 26378f0b759874f498703cfcabf9c60e, type: 2}
-  m_PrefabInternal: {fileID: 459992325}
 --- !u!1 &1532999452
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,10 +433,53 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 190260704}
+  m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2055343810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2055343811}
+  - 114: {fileID: 2055343812}
+  m_Layer: 0
+  m_Name: Palette
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2055343811
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2055343810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 190260704}
+  m_RootOrder: 0
+--- !u!114 &2055343812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2055343810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d200e9c49c38343cf8b0f0ac8ea48e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HorizontalPadding: 5
+  VerticalPadding: 10
+  ConceptTransforms: []
