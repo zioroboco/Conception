@@ -91,16 +91,20 @@ public class InputController : MonoBehaviour
 
     void Link(GameObject selected, GameObject hit)
     {
-		// todo: if they are a match!
+		Concept selectedConcept = selected.GetComponent<Concept>();
+		Concept hitConcept = hit.GetComponent<Concept>();
 
-		selected.GetComponent<Rigidbody2D>().isKinematic = false;
-		selected.GetComponent<CircleCollider2D>().enabled = true;
-		selected.GetComponent<PointEffector2D>().enabled = true;
-		selected.GetComponent<SpringJoint2D>().enabled = true;
-		selected.GetComponent<SpringJoint2D>().connectedBody = hit.GetComponent<Rigidbody2D>();
-		selected.GetComponent<SpringJoint2D>().distance = 50;
-		LineRenderer line = selected.GetComponent<LineRenderer>();
-		line.enabled = true;
-		lines.Add(line);
+		if (selectedConcept.parent ==  hitConcept)
+		{
+			selected.GetComponent<Rigidbody2D>().isKinematic = false;
+			selected.GetComponent<CircleCollider2D>().enabled = true;
+			selected.GetComponent<PointEffector2D>().enabled = true;
+			selected.GetComponent<SpringJoint2D>().enabled = true;
+			selected.GetComponent<SpringJoint2D>().connectedBody = hit.GetComponent<Rigidbody2D>();
+			selected.GetComponent<SpringJoint2D>().distance = 50;
+			LineRenderer line = selected.GetComponent<LineRenderer>();
+			line.enabled = true;
+			lines.Add(line);
+		}
     }
 }

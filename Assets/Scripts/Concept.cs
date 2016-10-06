@@ -5,7 +5,8 @@ public class Concept : MonoBehaviour
 {
 	public Dictionary<string,string> feedback {get; private set;}
 	TextMesh label;
-	Concept parent;
+	
+	public Concept parent;
 
 	void Awake ()
 	{
