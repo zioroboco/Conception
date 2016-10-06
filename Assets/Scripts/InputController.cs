@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using System.Collections.Generic;
 
 public class InputController : MonoBehaviour
 {
@@ -16,15 +18,25 @@ public class InputController : MonoBehaviour
 
 	float size;
 
+	List<LineRenderer> lines;
+
 	void Awake ()
 	{
 		size = GetComponent<Camera>().orthographicSize;
+		lines = new List<LineRenderer>();
 	}
      
 	void LateUpdate ()
 	{
 		Zoom();
 		Scroll();
+		Select();
+		foreach (LineRenderer line in lines)
+		{
+			Transform parentTransform = line.GetComponent<SpringJoint2D>().connectedBody.transform;
+			line.SetPosition(0, parentTransform.position);
+			line.SetPosition(1, line.transform.position);
+		}
 	}
 
 	void Zoom ()
@@ -50,4 +62,45 @@ public class InputController : MonoBehaviour
 		}
 		lastMousePosition = currentMousePosition;
 	}
+
+	GameObject selected;
+	void Select ()
+	{
+		if (Input.GetMouseButtonDown((int) button))
+		{
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+			if (hit.transform != null)
+			{
+				Debug.Log("Hit transform...");
+				if (selected == null)
+				{
+					Debug.Log("Selected == null");
+					selected = hit.transform.gameObject;
+					Debug.Log("Selected " + selected.name);
+				}
+				else
+				{
+					Debug.Log("Hit " + hit.transform.name + " with " + selected.name + " selected");
+					Link(selected, hit.transform.gameObject);
+					selected = null;
+				}
+			}
+		}
+	}
+
+    void Link(GameObject selected, GameObject hit)
+    {
+		// todo: if they are a match!
+
+		selected.GetComponent<Rigidbody2D>().isKinematic = false;
+		selected.GetComponent<CircleCollider2D>().enabled = true;
+		selected.GetComponent<PointEffector2D>().enabled = true;
+		selected.GetComponent<SpringJoint2D>().enabled = true;
+		selected.GetComponent<SpringJoint2D>().connectedBody = hit.GetComponent<Rigidbody2D>();
+		selected.GetComponent<SpringJoint2D>().distance = 50;
+		LineRenderer line = selected.GetComponent<LineRenderer>();
+		line.enabled = true;
+		lines.Add(line);
+    }
 }
