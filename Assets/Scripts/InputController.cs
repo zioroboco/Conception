@@ -115,7 +115,7 @@ public class InputController : MonoBehaviour
 			selected.GetComponent<PointEffector2D>().enabled = true;
 			selected.GetComponent<SpringJoint2D>().enabled = true;
 			selected.GetComponent<SpringJoint2D>().connectedBody = hit.GetComponent<Rigidbody2D>();
-			selected.GetComponent<SpringJoint2D>().distance = 50;
+//			selected.GetComponent<SpringJoint2D>().distance = 50;
 			LineRenderer line = selected.GetComponent<LineRenderer>();
 			line.enabled = true;
 			lines.Add(line);
