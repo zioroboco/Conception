@@ -5,6 +5,13 @@ using System.Collections.Generic;
 public class InputController : MonoBehaviour
 {
 	enum MouseButton { Primary, Secondary };
+	
+	[SerializeField]
+	Palette palette;
+	[SerializeField]
+	Transform desktop;
+	[SerializeField]
+	ConceptMap map;
 
 	[Header("Zoom")]
 	[SerializeField] float Min = 50f;
@@ -47,6 +54,8 @@ public class InputController : MonoBehaviour
 			size -= scrollInput * ZoomSensitivity * (Invert ? -1 : 1);
 			size = Mathf.Clamp(size, Min, Max);
 			GetComponent<Camera>().orthographicSize = size;
+			
+			this.palette.Reposition();
 		}
 	}
 
@@ -58,7 +67,10 @@ public class InputController : MonoBehaviour
 		if (Input.GetMouseButton((int)button))
 		{
 			Vector3 delta = currentMousePosition - lastMousePosition;
-			transform.position -= new Vector3(delta.x, delta.y, 0f) * ScrollSensitivity;
+			if (map.root != null)
+			{
+				map.root.gameObject.transform.position += new Vector3(delta.x, delta.y, 0f) * ScrollSensitivity;
+			}
 		}
 		lastMousePosition = currentMousePosition;
 	}
@@ -96,12 +108,14 @@ public class InputController : MonoBehaviour
 
 		if (selectedConcept.parent ==  hitConcept)
 		{
+			selected.transform.parent = this.desktop;
+			
 			selected.GetComponent<Rigidbody2D>().isKinematic = false;
 			selected.GetComponent<CircleCollider2D>().enabled = true;
 			selected.GetComponent<PointEffector2D>().enabled = true;
 			selected.GetComponent<SpringJoint2D>().enabled = true;
 			selected.GetComponent<SpringJoint2D>().connectedBody = hit.GetComponent<Rigidbody2D>();
-			selected.GetComponent<SpringJoint2D>().distance = 50;
+//			selected.GetComponent<SpringJoint2D>().distance = 50;
 			LineRenderer line = selected.GetComponent<LineRenderer>();
 			line.enabled = true;
 			lines.Add(line);

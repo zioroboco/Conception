@@ -15,7 +15,7 @@ public class ConceptMap : MonoBehaviour
 	public int Count { get; private set; }
 
 	JsonData feedback;
-	Concept root;
+	public Concept root;
 
 	void Awake ()
 	{
@@ -35,6 +35,8 @@ public class ConceptMap : MonoBehaviour
 		this.root.transform.parent = this.transform;
 		this.root.transform.position += Vector3.up * Camera.main.orthographicSize * 0.5f;
 		palette.ConceptTransforms.RemoveAt(0);
+		
+		this.root.transform.parent = this.transform;
 	}
 
 	/// Build a concept map from the given partial tree.
