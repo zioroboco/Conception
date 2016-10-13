@@ -120,5 +120,6 @@ public class InputController : MonoBehaviour
 			line.enabled = true;
 			lines.Add(line);
 		}
+		Debug.Log("Feedback: " + selectedConcept.GetFeedback(hitConcept.name));
     }
 }
