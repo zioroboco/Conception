@@ -84,10 +84,8 @@ public class InputController : MonoBehaviour
 			RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 			if (hit.transform != null)
 			{
-				Debug.Log("Hit transform...");
 				if (selected == null)
 				{
-					Debug.Log("Selected == null");
 					selected = hit.transform.gameObject;
 					Debug.Log("Selected " + selected.name);
 				}
@@ -115,7 +113,6 @@ public class InputController : MonoBehaviour
 			selected.GetComponent<PointEffector2D>().enabled = true;
 			selected.GetComponent<SpringJoint2D>().enabled = true;
 			selected.GetComponent<SpringJoint2D>().connectedBody = hit.GetComponent<Rigidbody2D>();
-//			selected.GetComponent<SpringJoint2D>().distance = 50;
 			LineRenderer line = selected.GetComponent<LineRenderer>();
 			line.enabled = true;
 			lines.Add(line);
