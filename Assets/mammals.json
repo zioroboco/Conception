@@ -79,11 +79,7 @@
                     "message":"So close, but dolphins are a different kind of whale. What do they have that many other whales don't?"
                 },
                 {
-                    "parent":"Sirenian",
-                    "message":"Dolphins are in a different family of marine mammals. Try again!"
-                },
-                {
-                    "parent":"Pinniped",
+                    "parent":["Sirenian", "Pinniped"],
                     "message":"Dolphins are in a different family of marine mammals. Try again!"
                 },
                 {
@@ -108,11 +104,7 @@
                     "message":"So close, but sperm whales are a different kind of whale. Try again!"
                 },
                 {
-                    "parent":"Sirenian",
-                    "message":"Sperm whales are in a different family of marine mammals. Try again!"
-                },
-                {
-                    "parent":"Pinniped",
+                    "parent":["Sirenian", "Pinniped"],
                     "message":"Sperm whales are in a different family of marine mammals. Try again!"
                 },
                 {

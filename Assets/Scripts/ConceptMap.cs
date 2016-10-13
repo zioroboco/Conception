@@ -115,10 +115,20 @@ public class ConceptMap : MonoBehaviour
 			for (int i = 0; i < feedbackArray.Count; i++)
 			{
 				JsonData entry = feedbackArray[i];
-				feedbackDictionary.Add((string) entry[0], (string) entry[1]);
+				
+				if (entry[0].GetJsonType() == JsonType.Array)
+				{
+					for (int j = 0; j < entry[0].Count; j++)
+					{
+						feedbackDictionary.Add((string) entry[0][j], (string) entry[1]);
+					}
+				}
+				else
+				{
+					feedbackDictionary.Add((string) entry[0], (string) entry[1]);
+				}
 			}
 		}
-
 		return feedbackDictionary;
 	}
 }

@@ -7,6 +7,7 @@ public class Concept : MonoBehaviour
 	TextMesh label;
 	
 	public Concept parent;
+	public new string name;
 
 	void Awake ()
 	{
@@ -28,6 +29,7 @@ public class Concept : MonoBehaviour
     public void SetName(string name)
     {
 		label.text = name;
+		this.name = name;
 		gameObject.name = "Concept (" + name + ")";
     }
 
