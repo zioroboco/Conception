@@ -243,6 +243,7 @@ MonoBehaviour:
     type: 2}
   parent: {fileID: 0}
   name: 
+  rooted: 0
 --- !u!120 &12048664
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -301,7 +302,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 0
-  m_Distance: 50
+  m_Distance: 40
   m_DampingRatio: 0
   m_Frequency: 1
 --- !u!250 &25072306
