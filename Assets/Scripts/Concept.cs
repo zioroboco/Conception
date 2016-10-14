@@ -13,6 +13,7 @@ public class Concept : MonoBehaviour
 	
 	public Concept parent;
 	public new string name;
+	public bool rooted = false;
 
 	void Awake ()
 	{

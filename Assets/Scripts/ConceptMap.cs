@@ -37,6 +37,8 @@ public class ConceptMap : MonoBehaviour
 		palette.ConceptTransforms.RemoveAt(0);
 		
 		this.root.transform.parent = this.transform;
+		
+		this.root.rooted = true;
 	}
 
 	/// Build a concept map from the given partial tree.

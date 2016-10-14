@@ -97,8 +97,16 @@ public class InputController : MonoBehaviour
 				else
 				{
 					selected.GetComponent<Concept>().ClearHighlight();
-					Link(selected, hit.transform.gameObject);
-					selected = null;
+					if (hit.transform.gameObject.GetComponent<Concept>().rooted)
+					{
+						Link(selected, hit.transform.gameObject);
+						selected = null;
+					}
+					else
+					{
+						selected = hit.transform.gameObject;
+						selected.GetComponent<Concept>().ApplyHighlight();
+					}
 				}
 			}
 		}
@@ -108,7 +116,7 @@ public class InputController : MonoBehaviour
     {
 		Concept selectedConcept = selected.GetComponent<Concept>();
 		Concept hitConcept = hit.GetComponent<Concept>();
-
+		
 		if (selectedConcept.parent ==  hitConcept)
 		{
 			selected.transform.parent = this.desktop;
@@ -123,6 +131,7 @@ public class InputController : MonoBehaviour
 			lines.Add(line);
 			
 			scoreboard.IncrementCorrect();
+			selectedConcept.rooted = true;
 		}
 		scoreboard.IncrementAttempts();
 		scoreboard.UpdateScoreDisplay();
