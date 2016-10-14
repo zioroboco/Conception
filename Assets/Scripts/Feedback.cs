@@ -24,4 +24,11 @@ public class Feedback : MonoBehaviour {
         }
         GetComponentInChildren<Text>().text = feedback;
     }
+    
+    public void ResetFeedback()
+    {
+        Tick.SetActive(false);
+        Cross.SetActive(false);
+        GetComponentInChildren<Text>().text = "";
+    }
 }

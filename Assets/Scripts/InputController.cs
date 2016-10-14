@@ -92,6 +92,7 @@ public class InputController : MonoBehaviour
 				{
 					selected = hit.transform.gameObject;
 					Debug.Log("Selected " + selected.name);
+					feedback.ResetFeedback();
 				}
 				else
 				{
