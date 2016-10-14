@@ -91,14 +91,12 @@ public class InputController : MonoBehaviour
 				if (selected == null)
 				{
 					selected = hit.transform.gameObject;
-					Debug.Log("Selected " + selected.name);
 					feedback.ResetFeedback();
 					selected.GetComponent<Concept>().ApplyHighlight();
 				}
 				else
 				{
 					selected.GetComponent<Concept>().ClearHighlight();
-					Debug.Log("Hit " + hit.transform.name + " with " + selected.name + " selected");
 					Link(selected, hit.transform.gameObject);
 					selected = null;
 				}
@@ -129,7 +127,6 @@ public class InputController : MonoBehaviour
 		scoreboard.IncrementAttempts();
 		scoreboard.UpdateScoreDisplay();
 		
-		Debug.Log("Feedback: " + selectedConcept.GetFeedback(hitConcept.name));
 		feedback.DisplayFeedback(hitConcept, selectedConcept);
     }
 }
