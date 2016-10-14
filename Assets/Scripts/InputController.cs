@@ -12,6 +12,8 @@ public class InputController : MonoBehaviour
 	Transform desktop;
 	[SerializeField]
 	ConceptMap map;
+	[SerializeField]
+	Feedback feedback;
 
 	[Header("Zoom")]
 	[SerializeField] float Min = 50f;
@@ -118,5 +120,6 @@ public class InputController : MonoBehaviour
 			lines.Add(line);
 		}
 		Debug.Log("Feedback: " + selectedConcept.GetFeedback(hitConcept.name));
+		feedback.DisplayFeedback(hitConcept, selectedConcept);
     }
 }
