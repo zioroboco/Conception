@@ -88,13 +88,13 @@ public class InputController : MonoBehaviour
 			RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 			if (hit.transform != null)
 			{
-				if (selected == null)
+				if (selected == null && !hit.transform.gameObject.GetComponent<Concept>().rooted)
 				{
 					selected = hit.transform.gameObject;
 					feedback.ResetFeedback();
 					selected.GetComponent<Concept>().ApplyHighlight();
 				}
-				else
+				else if (selected != null)
 				{
 					selected.GetComponent<Concept>().ClearHighlight();
 					if (hit.transform.gameObject.GetComponent<Concept>().rooted)
