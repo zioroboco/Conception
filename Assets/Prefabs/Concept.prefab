@@ -239,7 +239,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db1f2b7178b94045936cb0aecdbc3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HighlightPrefab: {fileID: 1000013258730324, guid: af0c72714b89c420191d143d11ed8e76,
+    type: 2}
   parent: {fileID: 0}
+  name: 
 --- !u!120 &12048664
 LineRenderer:
   m_ObjectHideFlags: 1

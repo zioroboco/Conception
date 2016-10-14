@@ -93,9 +93,11 @@ public class InputController : MonoBehaviour
 					selected = hit.transform.gameObject;
 					Debug.Log("Selected " + selected.name);
 					feedback.ResetFeedback();
+					selected.GetComponent<Concept>().ApplyHighlight();
 				}
 				else
 				{
+					selected.GetComponent<Concept>().ClearHighlight();
 					Debug.Log("Hit " + hit.transform.name + " with " + selected.name + " selected");
 					Link(selected, hit.transform.gameObject);
 					selected = null;
