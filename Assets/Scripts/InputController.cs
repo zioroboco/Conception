@@ -1,10 +1,24 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class InputController : MonoBehaviour
 {
 	enum MouseButton { Primary, Secondary };
+	
+	[SerializeField]
+	Palette palette;
+	[SerializeField]
+	Transform desktop;
+	[SerializeField]
+	ConceptMap map;
+	[SerializeField]
+	Feedback feedback;
+	[SerializeField]
+	Scoreboard scoreboard;
+	[SerializeField]
+	Text Tutorial;
 
 	[Header("Zoom")]
 	[SerializeField] float Min = 50f;
@@ -47,6 +61,8 @@ public class InputController : MonoBehaviour
 			size -= scrollInput * ZoomSensitivity * (Invert ? -1 : 1);
 			size = Mathf.Clamp(size, Min, Max);
 			GetComponent<Camera>().orthographicSize = size;
+			
+			this.palette.Reposition();
 		}
 	}
 
@@ -58,7 +74,10 @@ public class InputController : MonoBehaviour
 		if (Input.GetMouseButton((int)button))
 		{
 			Vector3 delta = currentMousePosition - lastMousePosition;
-			transform.position -= new Vector3(delta.x, delta.y, 0f) * ScrollSensitivity;
+			if (map.root != null)
+			{
+				map.root.gameObject.transform.position += new Vector3(delta.x, delta.y, 0f) * ScrollSensitivity;
+			}
 		}
 		lastMousePosition = currentMousePosition;
 	}
@@ -72,18 +91,25 @@ public class InputController : MonoBehaviour
 			RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 			if (hit.transform != null)
 			{
-				Debug.Log("Hit transform...");
-				if (selected == null)
+				if (selected == null && !hit.transform.gameObject.GetComponent<Concept>().rooted)
 				{
-					Debug.Log("Selected == null");
 					selected = hit.transform.gameObject;
-					Debug.Log("Selected " + selected.name);
+					feedback.ResetFeedback();
+					selected.GetComponent<Concept>().ApplyHighlight();
 				}
-				else
+				else if (selected != null)
 				{
-					Debug.Log("Hit " + hit.transform.name + " with " + selected.name + " selected");
-					Link(selected, hit.transform.gameObject);
-					selected = null;
+					selected.GetComponent<Concept>().ClearHighlight();
+					if (hit.transform.gameObject.GetComponent<Concept>().rooted)
+					{
+						Link(selected, hit.transform.gameObject);
+						selected = null;
+					}
+					else
+					{
+						selected = hit.transform.gameObject;
+						selected.GetComponent<Concept>().ApplyHighlight();
+					}
 				}
 			}
 		}
@@ -93,18 +119,28 @@ public class InputController : MonoBehaviour
     {
 		Concept selectedConcept = selected.GetComponent<Concept>();
 		Concept hitConcept = hit.GetComponent<Concept>();
-
+		
 		if (selectedConcept.parent ==  hitConcept)
 		{
+			Tutorial.gameObject.SetActive(false);
+			
+			selected.transform.parent = this.desktop;
+			
 			selected.GetComponent<Rigidbody2D>().isKinematic = false;
 			selected.GetComponent<CircleCollider2D>().enabled = true;
 			selected.GetComponent<PointEffector2D>().enabled = true;
 			selected.GetComponent<SpringJoint2D>().enabled = true;
 			selected.GetComponent<SpringJoint2D>().connectedBody = hit.GetComponent<Rigidbody2D>();
-			selected.GetComponent<SpringJoint2D>().distance = 50;
 			LineRenderer line = selected.GetComponent<LineRenderer>();
 			line.enabled = true;
 			lines.Add(line);
+			
+			scoreboard.IncrementCorrect();
+			selectedConcept.rooted = true;
 		}
+		scoreboard.IncrementAttempts();
+		scoreboard.UpdateScoreDisplay();
+		
+		feedback.DisplayFeedback(hitConcept, selectedConcept);
     }
 }

@@ -29,8 +29,9 @@ public class Palette : MonoBehaviour
 		CalculateArrangement();
 		Place(ConceptTransforms);
 
-		this.transform.position += Vector3.left * (DesktopWidth / 2f - ConceptSpacing / 2f);
-		this.transform.position += Vector3.down * (Camera.main.orthographicSize - CONCEPT_HEIGHT / 2f - VerticalPadding);
+//		this.transform.position += Vector3.left * (DesktopWidth / 2f - ConceptSpacing / 2f);
+//		this.transform.position += Vector3.down * (Camera.main.orthographicSize - CONCEPT_HEIGHT / 2f - VerticalPadding);
+		Reposition();
 	}
 
 	/// Calculate how many rows there will be, and how many concepts per full row.
@@ -124,6 +125,12 @@ public class Palette : MonoBehaviour
 		{
 			rowTransform.position += Vector3.right * ConceptSpacing / 2f;
 		}
+	}
+	
+	public void Reposition ()	
+	{
+		this.transform.position = new Vector3(-(DesktopWidth / 2f - ConceptSpacing / 2f), this.transform.position.y, -1f);
+		this.transform.position = new Vector3(this.transform.position.x, -(Camera.main.orthographicSize - CONCEPT_HEIGHT / 2f - VerticalPadding), -1f);
 	}
 }
 

@@ -15,7 +15,7 @@ public class ConceptMap : MonoBehaviour
 	public int Count { get; private set; }
 
 	JsonData feedback;
-	Concept root;
+	public Concept root;
 
 	void Awake ()
 	{
@@ -35,6 +35,10 @@ public class ConceptMap : MonoBehaviour
 		this.root.transform.parent = this.transform;
 		this.root.transform.position += Vector3.up * Camera.main.orthographicSize * 0.5f;
 		palette.ConceptTransforms.RemoveAt(0);
+		
+		this.root.transform.parent = this.transform;
+		
+		this.root.rooted = true;
 	}
 
 	/// Build a concept map from the given partial tree.
@@ -113,10 +117,20 @@ public class ConceptMap : MonoBehaviour
 			for (int i = 0; i < feedbackArray.Count; i++)
 			{
 				JsonData entry = feedbackArray[i];
-				feedbackDictionary.Add((string) entry[0], (string) entry[1]);
+				
+				if (entry[0].GetJsonType() == JsonType.Array)
+				{
+					for (int j = 0; j < entry[0].Count; j++)
+					{
+						feedbackDictionary.Add((string) entry[0][j], (string) entry[1]);
+					}
+				}
+				else
+				{
+					feedbackDictionary.Add((string) entry[0], (string) entry[1]);
+				}
 			}
 		}
-
 		return feedbackDictionary;
 	}
 }

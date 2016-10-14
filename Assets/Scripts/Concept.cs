@@ -6,7 +6,14 @@ public class Concept : MonoBehaviour
 	public Dictionary<string,string> feedback {get; private set;}
 	TextMesh label;
 	
+	[SerializeField]
+	GameObject HighlightPrefab;
+	
+	GameObject highlight;
+	
 	public Concept parent;
+	public new string name;
+	public bool rooted = false;
 
 	void Awake ()
 	{
@@ -28,11 +35,27 @@ public class Concept : MonoBehaviour
     public void SetName(string name)
     {
 		label.text = name;
+		this.name = name;
 		gameObject.name = "Concept (" + name + ")";
     }
 
 	public void SetParentConcept(Concept parentConcept)
 	{
 		this.parent = parentConcept;
+	}
+	
+	public void ApplyHighlight()
+	{
+		highlight = Instantiate(HighlightPrefab);
+		highlight.transform.position = transform.position;
+		highlight.transform.parent = transform.parent;
+	}
+	
+	public void ClearHighlight()
+	{
+		if (highlight != null)
+		{
+			Destroy(highlight);
+		}
 	}
 }
