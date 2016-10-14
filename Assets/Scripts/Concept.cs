@@ -47,6 +47,7 @@ public class Concept : MonoBehaviour
 	{
 		highlight = Instantiate(HighlightPrefab);
 		highlight.transform.position = transform.position;
+		highlight.transform.parent = transform.parent;
 	}
 	
 	public void ClearHighlight()
