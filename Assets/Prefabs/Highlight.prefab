@@ -22,7 +22,7 @@ GameObject:
   - 33: {fileID: 33000011640744252}
   - 23: {fileID: 23000011375348578}
   m_Layer: 0
-  m_Name: Selection Highlight
+  m_Name: Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
