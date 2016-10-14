@@ -14,6 +14,8 @@ public class InputController : MonoBehaviour
 	ConceptMap map;
 	[SerializeField]
 	Feedback feedback;
+	[SerializeField]
+	Scoreboard scoreboard;
 
 	[Header("Zoom")]
 	[SerializeField] float Min = 50f;
@@ -118,7 +120,12 @@ public class InputController : MonoBehaviour
 			LineRenderer line = selected.GetComponent<LineRenderer>();
 			line.enabled = true;
 			lines.Add(line);
+			
+			scoreboard.IncrementCorrect();
 		}
+		scoreboard.IncrementAttempts();
+		scoreboard.UpdateScoreDisplay();
+		
 		Debug.Log("Feedback: " + selectedConcept.GetFeedback(hitConcept.name));
 		feedback.DisplayFeedback(hitConcept, selectedConcept);
     }
