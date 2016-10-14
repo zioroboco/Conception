@@ -90,6 +90,46 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &16650928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 16650930}
+  - 114: {fileID: 16650929}
+  m_Layer: 0
+  m_Name: Scorekeeper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &16650929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 16650928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985e026da868d4029b0fb5aeb55faa24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &16650930
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 16650928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
 --- !u!1 &57296931
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreDisplay: {fileID: 1529989125}
+  correct: 0
+  attempts: 0
 --- !u!1 &190260699
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,6 +990,7 @@ GameObject:
   - 222: {fileID: 1629593878}
   - 114: {fileID: 1629593877}
   - 114: {fileID: 1629593876}
+  - 114: {fileID: 1629593879}
   m_Layer: 5
   m_Name: Done Button
   m_TagString: Untagged
@@ -1048,6 +1091,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1629593874}
+--- !u!114 &1629593879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1629593874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c898ceeba3e6b402d85d752e1e2cd27e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorekeeper: {fileID: 16650929}
+  scoreboard: {fileID: 57296935}
 --- !u!1 &1651767571
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,8 +6,8 @@ public class Scoreboard : MonoBehaviour {
     [SerializeField]
     Text ScoreDisplay;
     
-    public int correct { get; private set; }
-    public int attempts { get; private set; }
+    public int correct = 0;
+    public int attempts = 0;
     
     public void IncrementCorrect ()
     {

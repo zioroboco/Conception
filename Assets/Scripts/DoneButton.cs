@@ -4,14 +4,20 @@ using UnityEngine.SceneManagement;
 
 public class DoneButton : MonoBehaviour {
 	
+	[SerializeField]
+	Scorekeeper scorekeeper;
+	[SerializeField]
+	Scoreboard scoreboard;
+	
 	void Awake ()
 	{
 		Button button = GetComponent<Button>();
-		button.onClick.AddListener(ReloadScene);
+		button.onClick.AddListener(ClickDone);
 	}
 	
-	void ReloadScene ()
+	void ClickDone ()
 	{
+		scorekeeper.AddScore(scoreboard.correct, scoreboard.attempts);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
