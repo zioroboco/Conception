@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class InputController : MonoBehaviour
@@ -16,6 +17,8 @@ public class InputController : MonoBehaviour
 	Feedback feedback;
 	[SerializeField]
 	Scoreboard scoreboard;
+	[SerializeField]
+	Text Tutorial;
 
 	[Header("Zoom")]
 	[SerializeField] float Min = 50f;
@@ -119,6 +122,8 @@ public class InputController : MonoBehaviour
 		
 		if (selectedConcept.parent ==  hitConcept)
 		{
+			Tutorial.gameObject.SetActive(false);
+			
 			selected.transform.parent = this.desktop;
 			
 			selected.GetComponent<Rigidbody2D>().isKinematic = false;
