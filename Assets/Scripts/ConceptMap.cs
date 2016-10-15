@@ -14,6 +14,8 @@ public class ConceptMap : MonoBehaviour
 
 	public int Count { get; private set; }
 
+	public int ConceptCount;
+
 	JsonData feedback;
 	public Concept root;
 
@@ -65,6 +67,7 @@ public class ConceptMap : MonoBehaviour
 		}
 
 		Count++;
+		ConceptCount++;
 		return concept;
 	}
 
