@@ -1,0 +1,118 @@
+{
+    "map":[
+        {
+            "name":"Marine mammal",
+            "children":[
+                {
+                    "name":"Cetacean",
+                    "children":[
+                        {
+                            "name":"Toothed whale",
+                            "children":[
+                                {
+                                    "name":"Sperm whale"
+                                },
+                                {
+                                    "name":"Dolphin"
+                                },
+                                {
+                                    "name":"Orca"
+                                },
+                                {
+                                    "name":"Beluga whale"
+                                }
+                            ]
+                        },
+                        {
+                            "name":"Baleen whale",
+                            "children":[
+                                {
+                                    "name":"Humpback whale"
+                                },
+                                {
+                                    "name":"Blue whale"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name":"Sirenian",
+                    "children":[
+                        {
+                            "name":"Manatee"
+                        },
+                        {
+                            "name":"Dugong"
+                        }
+                    ]
+                },
+                {
+                    "name":"Pinniped",
+                    "children":[
+                        {
+                            "name":"Seal lion"
+                        },
+                        {
+                            "name":"Walrus"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+
+    "feedback":[
+        {
+            "child":"Dolphin",
+            "categories":[
+                {
+                    "parent":"Toothed whale",
+                    "message":"That's right! Dolphins are toothed whales!"
+                },
+                {
+                    "parent":"Humpback whale",
+                    "message":"They're very closely related to this species! But what are they more generally?"
+                },
+                {
+                    "parent":"Baleen whale",
+                    "message":"So close, but dolphins are a different kind of whale. What do they have that many other whales don't?"
+                },
+                {
+                    "parent":["Sirenian", "Pinniped"],
+                    "message":"Dolphins are in a different family of marine mammals. Try again!"
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"Dolphins have a more specific classification than this. Try placing them lower on your map!"
+                }
+            ]
+        },
+        {
+            "child":"Sperm whale",
+            "categories":[
+                {
+                    "parent":"Toothed whale",
+                    "message":"That's right! Sperm whales are toothed whales!"
+                },
+                {
+                    "parent":"Humpback whale",
+                    "message":"They're very closely related to this species! But what are they more generally?"
+                },
+                {
+                    "parent":"Baleen whale",
+                    "message":"So close, but sperm whales are a different kind of whale. Try again!"
+                },
+                {
+                    "parent":["Sirenian", "Pinniped"],
+                    "message":"Sperm whales are in a different family of marine mammals. Try again!"
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"Sperm whales have a more specific classification than this. Try placing them lower on your map!"
+                }
+            ]
+        }
+    ],
+    "source":"https://en.wikipedia.org/wiki/Marine_mammal"
+}

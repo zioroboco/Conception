@@ -51,7 +51,7 @@
                     "name":"Pinniped",
                     "children":[
                         {
-                            "name":"Seal lion"
+                            "name":"Sea lion"
                         },
                         {
                             "name":"Walrus"
@@ -64,6 +64,40 @@
 
     "feedback":[
         {
+            "child":"Cetacean",
+            "categories":[
+                {
+                    "parent":["Sirenian", "Pinniped"],
+                    "message":"No, but cetaceans are another large family of marine mammals."
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"Yep! Cetaceans are the family of marine mammals which includes whales and dolphins!"
+                }
+            ]
+        },
+        {
+            "child":"Toothed whale",
+            "categories":[
+                {
+                    "parent":"Cetacean",
+                    "message":"That's right! In fact, toothed whales are the largest group of cetaceans."
+                },
+                {
+                    "parent":["Sirenian", "Pinniped"],
+                    "message":"Toothed whales are in another family of marine mammals."
+                },
+                {
+                    "parent":"Baleen whale",
+                    "message":"Not quite, but close..."
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"This is too general. Try placing this concept lower on your map!"
+                }
+            ]
+        },
+        {
             "child":"Dolphin",
             "categories":[
                 {
@@ -71,12 +105,8 @@
                     "message":"That's right! Dolphins are toothed whales!"
                 },
                 {
-                    "parent":"Humpback whale",
-                    "message":"They're very closely related to this species! But what are they more generally?"
-                },
-                {
                     "parent":"Baleen whale",
-                    "message":"So close, but dolphins are a different kind of whale. What do they have that many other whales don't?"
+                    "message":"So close, but dolphins are a different kind of cetacean. What do they have that many other whales don't?"
                 },
                 {
                     "parent":["Sirenian", "Pinniped"],
@@ -96,12 +126,8 @@
                     "message":"That's right! Sperm whales are toothed whales!"
                 },
                 {
-                    "parent":"Humpback whale",
-                    "message":"They're very closely related to this species! But what are they more generally?"
-                },
-                {
                     "parent":"Baleen whale",
-                    "message":"So close, but sperm whales are a different kind of whale. Try again!"
+                    "message":"So close, but sperm whales are a different kind of cetacean. Try again!"
                 },
                 {
                     "parent":["Sirenian", "Pinniped"],
@@ -112,6 +138,216 @@
                     "message":"Sperm whales have a more specific classification than this. Try placing them lower on your map!"
                 }
             ]
+        },
+        {
+            "child":"Orca",
+            "categories":[
+                {
+                    "parent":"Toothed whale",
+                    "message":"That's right! Orcas are toothed whales!"
+                },
+                {
+                    "parent":"Baleen whale",
+                    "message":"So close, but orcas are a different kind of cetacean. Try again!"
+                },
+                {
+                    "parent":["Sirenian", "Pinniped"],
+                    "message":"Orcas are in a different family of marine mammals. Try again!"
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"Orcas have a more specific classification than this. Try placing them lower on your map!"
+                }
+            ]
+        },
+        {
+            "child":"Beluga whale",
+            "categories":[
+                {
+                    "parent":"Toothed whale",
+                    "message":"Yes! As well as being adorable, beluga whales are toothed whales!"
+                },
+                {
+                    "parent":"Baleen whale",
+                    "message":"So close, but beluga whales are a different kind of cetacean. Try again!"
+                },
+                {
+                    "parent":["Sirenian", "Pinniped"],
+                    "message":"Beluga whales are in a different family of marine mammals. Try again!"
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"Beluga whales have a more specific classification than this. Try placing them lower on your map!"
+                }
+            ]
+        },
+        {
+            "child":"Baleen whale",
+            "categories":[
+                {
+                    "parent":"Cetacean",
+                    "message":"That's right! Baleen whales are a group of cetaceans which are filter feeders!"
+                },
+                {
+                    "parent":["Sirenian", "Pinniped"],
+                    "message":"Baleen whales are in another family of marine mammals."
+                },
+                {
+                    "parent":"Toothed whale",
+                    "message":"Not quite, but close..."
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"This is too general. Try placing this concept lower on your map!"
+                }
+            ]
+        },
+        {
+            "child":"Blue whale",
+            "categories":[
+                {
+                    "parent":"Toothed whale",
+                    "message":"Not quite. Take a look inside a blue whale's mouth some time!"
+                },
+                {
+                    "parent":"Baleen whale",
+                    "message":"Yes! Blue whales are filter feeders!"
+                },
+                {
+                    "parent":["Sirenian", "Pinniped"],
+                    "message":"Blue whales are in a different family of marine mammals. Try again!"
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"Blue whales have a more specific classification than this. Try placing them lower on your map!"
+                }
+            ]
+        },
+        {
+            "child":"Humpback whale",
+            "categories":[
+                {
+                    "parent":"Toothed whale",
+                    "message":"No way! Humpback whales are filter feeders!"
+                },
+                {
+                    "parent":"Baleen whale",
+                    "message":"Yes! Humpback whales gulp huge mouthfulls of krill from the oceans!"
+                },
+                {
+                    "parent":["Sirenian", "Pinniped"],
+                    "message":"Humpback whales are in a different family of marine mammals. Try again!"
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"Blue whales have a more specific classification than this. Try placing them lower on your map!"
+                }
+            ]
+        },
+        {
+            "child":"Sirenian",
+            "categories":[
+                {
+                    "parent":"Marine mammal",
+                    "message":"Yep! Sirenians are a family of marine mammals named for being the possible source of the myth of mermaids!"
+                },
+                {
+                    "parent":["Cetacean", "Toothed whale", "Baleen whale"],
+                    "message":"Nope... sirenians aren't whales!"
+                },
+                {
+                    "parent":"Pinniped",
+                    "message":"No, but this is another family of marine mammals!"
+                }
+                
+            ]
+        },
+        {
+            "child":"Dugong",
+            "categories":[
+                {
+                    "parent":"Sirenian",
+                    "message":"Yes! The gentle sea cow is a sirenian!"
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"Dugongs have a more specific classification than this. Try placing them lower on your map!"
+                },
+                {
+                    "parent":["Cetacean", "Toothed whale", "Baleen whale"],
+                    "message":"Alright, who told you these guys were whales? No way!"
+                }
+            ]
+        },
+        {
+            "child":"Manatee",
+            "categories":[
+                {
+                    "parent":"Sirenian",
+                    "message":"That's right! ... What, they don't remind you of mermaids? You need to get out more. Or maybe I do."
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"Manatees have a more specific classification than this. Try placing them lower on your map!"
+                },
+                {
+                    "parent":["Cetacean", "Toothed whale", "Baleen whale"],
+                    "message":"Alright, who told you these guys were whales? No way!"
+                }
+            ]
+        },
+        {
+            "child":"Pinniped",
+            "categories":[
+                {
+                    "parent":"Marine mammal",
+                    "message":"That's right! Pinnipeds are an *adorable* family of marine mammals!"
+                },
+                {
+                    "parent":["Cetacean", "Toothed whale", "Baleen whale"],
+                    "message":"Nope... pinnipeds definitely aren't whales!"
+                },
+                {
+                    "parent":"Sirenian",
+                    "message":"No, but this is another family of marine mammals!"
+                }
+            ]
+        },
+        {
+            "child":"Sea lion",
+            "categories":[
+                {
+                    "parent":["Cetacean", "Toothed whale", "Baleen whale"],
+                    "message":"No. Definitely not whales!"
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"Sea lions have a more specific classification than this. Try placing them lower on your map!"
+                },
+                {
+                    "parent":"Pinniped",
+                    "message":"Yep! So cute!"
+                }
+            ]
+        },
+        {
+            "child":"Walrus",
+            "categories":[
+                {
+                    "parent":["Cetacean", "Toothed whale", "Baleen whale"],
+                    "message":"For sure these are not whales!"
+                },
+                {
+                    "parent":"Marine mammal",
+                    "message":"Walruses have a more specific classification than this. Try placing them lower on your map!"
+                },
+                {
+                    "parent":"Pinniped",
+                    "message":"That's right! And I don't know... are walruses cute? I guess they are."
+                }
+            ]
         }
-    ]
+        
+    ],
+    "source":"https://en.wikipedia.org/wiki/Marine_mammal"
 }
