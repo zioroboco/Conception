@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.IO;
 using UnityEngine;
 using LitJson;
 using System.Collections.Generic;
@@ -6,31 +6,38 @@ using System.Collections.Generic;
 public class ConceptMap : MonoBehaviour
 {
 	[SerializeField]
-	TextAsset SourceFile;
-	[SerializeField]
 	GameObject ConceptPrefab;
 	[SerializeField]
 	Palette palette;
+	
+	public string SourceUrl;
 
 	public int Count { get; private set; }
+
+	public int ConceptCount;
 
 	JsonData feedback;
 	public Concept root;
 
 	void Awake ()
 	{
-		Load(SourceFile);
+		string inputFilePath = Application.dataPath + "/input.json";
+		string inputFileContents = new StreamReader(inputFilePath).ReadToEnd();
+		
+		Load(inputFileContents);
 		palette.Arrange();
 	}
 
 	/// Build a map from the given source file.
-	void Load (TextAsset source)
+	void Load (string source)
 	{
-		JsonData json = JsonMapper.ToObject(source.text);
+		JsonData json = JsonMapper.ToObject(source);
 
 		this.feedback = json["feedback"];
 
 		this.root = Populate(null, json["map"][0]);
+		
+		this.SourceUrl = (string) json["source"];
 
 		this.root.transform.parent = this.transform;
 		this.root.transform.position += Vector3.up * Camera.main.orthographicSize * 0.5f;
@@ -65,6 +72,7 @@ public class ConceptMap : MonoBehaviour
 		}
 
 		Count++;
+		ConceptCount++;
 		return concept;
 	}
 
