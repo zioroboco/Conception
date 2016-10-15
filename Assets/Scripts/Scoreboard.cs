@@ -23,8 +23,13 @@ public class Scoreboard : MonoBehaviour {
     {
         ScoreDisplay.text = FormatScore(correct, attempts);
     }
+
+    public string FormatScore()
+    {
+        return FormatScore(correct, attempts);
+    }
     
-    private string FormatScore(int correct, int attempts)
+    public string FormatScore(int correct, int attempts)
     {
         return correct.ToString() + "/" + attempts.ToString();
     }
