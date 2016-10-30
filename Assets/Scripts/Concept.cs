@@ -28,7 +28,7 @@ public class Concept : MonoBehaviour
 	public string GetFeedback(string parent)
 	{
 		string message;
-		feedback.TryGetValue(parent, out message);
+		feedback.TryGetValue(parent.ToLower(), out message);
 		return message;
 	}
 

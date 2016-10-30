@@ -1,0 +1,59 @@
+map:
+    - 
+        name: The Sun
+        children:
+            - 
+                name: Bodies Of Water
+                children:
+                    - 
+                        name: Clouds
+                        children:
+                            - 
+                                name: Snow
+                            - 
+                                name: Hail
+                            - 
+                                name: Rain
+                            - 
+                                name: Cirrus
+                            - 
+                                name: Stratus
+                            - 
+                                name: Cumulus
+feedback:
+    - 
+        child: Rain
+        categories:
+            - 
+                parent: Clouds
+                message: "That's right! Clouds condense into rain!"
+            - 
+                parent: Cumulus
+                message: 'While this is correct, it is too specific, think more generally'
+            - 
+                parent: Cirrus
+                message: 'While this is correct, it is too specific, think more generally'
+            - 
+                parent: Stratus
+                message: 'While this is correct, it is too specific, think more generally'
+            - 
+                parent: Bodies of water
+                message: 'You are thinking too far ahead, there is an important step in between'
+            - 
+                parent: Snow
+                message: 'These two are both ways that water reaches the earth, they both come from the same source'
+            - 
+                parent: Hail
+                message: 'These two are both ways that water reaches the earth, they both come from the same source'
+    - 
+        child: clouds
+        categories:
+            - 
+                parent: Bodies of water
+                message: 'Correct, bodies of water are evaporated into clouds'
+            - 
+                parent: The Sun
+                message: 'Not quite, theres a phase inbetween'
+            - 
+                parent: rain
+                message: 'The order here is reversed!'

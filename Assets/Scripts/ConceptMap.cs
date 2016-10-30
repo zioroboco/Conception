@@ -130,12 +130,16 @@ public class ConceptMap : MonoBehaviour
 				{
 					for (int j = 0; j < entry[0].Count; j++)
 					{
-						feedbackDictionary.Add((string) entry[0][j], (string) entry[1]);
+						string feedbackStringParent = (string) entry[0][j];
+						string feedbackStringMessage = (string) entry[1];
+						feedbackDictionary.Add(feedbackStringParent.ToLower(), feedbackStringMessage);
 					}
 				}
 				else
 				{
-					feedbackDictionary.Add((string) entry[0], (string) entry[1]);
+					string feedbackStringParent = (string) entry[0];
+					string feedbackStringMessage = (string) entry[1];
+					feedbackDictionary.Add(feedbackStringParent.ToLower(), feedbackStringMessage);
 				}
 			}
 		}
